@@ -160,6 +160,44 @@
         height: 180px;
       }
     }
+    /* Miglioramento layout modulo RSVP */
+.modulo-rsvp {
+  display: flex;
+  flex-direction: column; /* mette tutto in verticale */
+  gap: 15px;              /* distanza tra i campi */
+  margin-top: 10px;
+}
+
+.modulo-rsvp input,
+.modulo-rsvp select,
+.modulo-rsvp textarea,
+.modulo-rsvp button {
+  width: 100%;            /* occupano tutta la larghezza del form */
+  padding: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Pulsante elegante minimal chic */
+.modulo-rsvp button {
+  cursor: pointer;
+  background-color: var(--sage);
+  color: var(--text);
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.modulo-rsvp button:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+/* Campo note/allergie leggermente più alto */
+.modulo-rsvp textarea {
+  min-height: 80px;
+  resize: vertical; /* l’utente può allungarlo se vuole */
+}
   </style>
 </head>
 <body>
@@ -289,3 +327,4 @@
 </body>
 
 </html>
+
