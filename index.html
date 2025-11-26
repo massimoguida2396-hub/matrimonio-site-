@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Massimo & Marta - Matrimonio</title>
+<div class="rsvp-wrapper">
+  <form class="modulo-rsvp" id="rsvpForm">
+    <input type="text" name="nome" placeholder="Nome e Cognome" required>
+    <select name="presenza" required>
+      <option value="Si">Parteciperò</option>
+      <option value="No">Mi dispiace, non posso esserci</option>
+    </select>
+    <input type="number" name="numero_ospiti" placeholder="Numero di ospiti (escluso te)" min="0">
+    <textarea name="messaggio" placeholder="Allergie, richieste o note (opzionale)"></textarea>
+    <button type="submit">Invia Conferma</button>
+  </form>
+</div>
   <style>
     :root {
       --sage: #b2c4b1;
@@ -160,43 +172,23 @@
         height: 180px;
       }
     }
-    /* Miglioramento layout modulo RSVP */
-.modulo-rsvp {
-  display: flex;
-  flex-direction: column; /* mette tutto in verticale */
-  gap: 15px;              /* distanza tra i campi */
-  margin-top: 10px;
+    .rsvp-wrapper .modulo-rsvp {
+  display: flex;           /* mette i campi in verticale */
+  flex-direction: column;
+  gap: 15px;               /* distanza tra i campi */
 }
 
-.modulo-rsvp input,
-.modulo-rsvp select,
-.modulo-rsvp textarea,
-.modulo-rsvp button {
-  width: 100%;            /* occupano tutta la larghezza del form */
-  padding: 10px;
-  font-size: 1rem;
+.rsvp-wrapper .modulo-rsvp input,
+.rsvp-wrapper .modulo-rsvp select,
+.rsvp-wrapper .modulo-rsvp textarea,
+.rsvp-wrapper .modulo-rsvp button {
+  width: 100%;
   box-sizing: border-box;
 }
 
-/* Pulsante elegante minimal chic */
-.modulo-rsvp button {
-  cursor: pointer;
-  background-color: var(--sage);
-  color: var(--text);
-  font-weight: bold;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-.modulo-rsvp button:hover {
-  background-color: var(--secondary);
-  color: var(--white);
-}
-
-/* Campo note/allergie leggermente più alto */
-.modulo-rsvp textarea {
-  min-height: 80px;
-  resize: vertical; /* l’utente può allungarlo se vuole */
+.rsvp-wrapper .modulo-rsvp textarea {
+  min-height: 80px;        /* campo note più alto */
+  resize: vertical;
 }
   </style>
 </head>
@@ -327,4 +319,5 @@
 </body>
 
 </html>
+
 
