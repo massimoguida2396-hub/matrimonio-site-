@@ -1,289 +1,72 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Massimo & Marta - Matrimonio</title>
-  <style>
-    :root {
-      --sage: #b2c4b1;
-      --cream: #f8f5f1;
-      --accent: #e5e0dd;
-      --text: #37474f;
-      --secondary: #8eacbb;
-      --white: #fff;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', 'Montserrat', Arial, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-    }
-    header {
-      background: var(--sage);
-      color: var(--text);
-      padding: 40px 10px 20px 10px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.6rem;
-      margin: 0 0 12px 0;
-      letter-spacing: 2px;
-    }
-    header p {
-      margin: 0;
-      font-size: 1.2rem;
-      color: var(--secondary);
-    }
-    section {
-      margin: 40px auto;
-      max-width: 720px;
-      background: var(--white);
-      border-radius: 18px;
-      box-shadow: 0 2px 12px rgba(178,196,177,0.08);
-      padding: 38px 30px;
-    }
-    section h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--sage);
-      letter-spacing: 1px;
-      text-align: left;
-    }
-    .programma {
-      list-style-type: circle;
-      margin-left: 20px;
-      margin-bottom: 0;
-    }
-    .galleria {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-    .galleria img {
-      width: 180px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid var(--accent);
-      background: var(--accent);
-      transition: transform 0.2s;
-    }
-    .galleria img:hover {
-      transform: scale(1.07);
-    }
-
-    /* FORM RSVP */
-    .rsvp-wrapper .modulo-rsvp {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .rsvp-wrapper .modulo-rsvp input,
-    .rsvp-wrapper .modulo-rsvp select,
-    .rsvp-wrapper .modulo-rsvp textarea,
-    .rsvp-wrapper .modulo-rsvp button {
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid var(--accent);
-      border-radius: 7px;
-      padding: 10px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    .rsvp-wrapper .modulo-rsvp textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-    .rsvp-wrapper .modulo-rsvp button {
-      background: var(--sage);
-      color: var(--text);
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s;
-    }
-    .rsvp-wrapper .modulo-rsvp button:active {
-      background: var(--secondary);
-      color: var(--white);
-    }
-
-    .iban-section {
-      background: var(--accent);
-      padding: 18px;
-      border-radius: 12px;
-      color: var(--text);
-      margin-bottom: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      font-size: 1.08em;
-    }
-    .iban-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-    }
-    .copy-btn {
-      background: var(--sage);
-      color: var(--text);
-      border: none;
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-left: 6px;
-      transition: background 0.16s;
-    }
-    .copy-btn:active{
-      background: var(--secondary);
-      color: var(--white);
-    }
-    .location iframe {
-      border-radius: 15px;
-      border: 2px solid var(--sage);
-      width: 100%;
-      height: 250px;
-      margin-bottom: 12px;
-    }
-    .footer {
-      background: var(--sage);
-      color: var(--text);
-      text-align: center;
-      padding: 10px;
-      margin-top: 40px;
-      font-size: .97em;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 600px) {
-      section {
-        padding: 24px 7px;
-      }
-      .galleria img {
-        width: 92px;
-        height: 62px;
-      }
-      .location iframe {
-        height: 180px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Massimo & Marta</h1>
-  <p>Festeggiamo insieme il nostro matrimonio!<br>
-    <span style="color:var(--text);font-weight:bold;">30 Maggio 2026 · ore 17:00</span> <br>
-    Villa Calchi, Via Principe Pio Giovanni Falcò, 50, Merate (LC)
-  </p>
-</header>
-
-<main>
-<section>
-  <h2>RSVP · Conferma Partecipazione</h2>
-  <div class="rsvp-wrapper">
-    <form class="modulo-rsvp" id="rsvpForm">
-      <input type="text" name="nome" placeholder="Nome e Cognome" required>
-      <select name="presenza" required>
-        <option value="Si">Parteciperò</option>
-        <option value="No">Mi dispiace, non posso esserci</option>
-      </select>
-      <input type="number" name="numero_ospiti" placeholder="Numero di ospiti (escluso te)" min="0">
-      <textarea name="messaggio" placeholder="Allergie, richieste o note (opzionale)"></textarea>
-      <button type="submit">Invia Conferma</button>
-    </form>
-  </div>
-  <p id="rsvpResult" style="color:green;margin-top:10px;"></p>
-</section>
-
 <section>
   <h2>Galleria Fotografica</h2>
-  <div class="galleria">
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?fit=crop&w=400&q=80" alt="foto matrimonio 1">
-    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?fit=crop&w=400&q=80" alt="foto matrimonio 2">
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=400&q=80" alt="foto matrimonio 3">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?fit=crop&w=400&q=80" alt="foto matrimonio 4">
+
+  <p style="
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  ">
+    Condividi con noi i tuoi scatti più belli 📸✨<br>
+    Puoi caricare foto e video, oppure visualizzare l'intera raccolta.
+  </p>
+
+  <div style="
+    background: var(--cream);
+    border: 1px solid var(--accent);
+    padding: 32px 20px;
+    border-radius: 18px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  ">
+
+    <!-- Pulsante Carica -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScwuI11BVJmniwz1niooqXa81ahB-4hsdbzE9TA0WpmYoVuqA/viewform?usp=dialog"
+       target="_blank"
+       style="
+        display: block;
+        width: 100%;
+        padding: 14px 22px;
+        background: white;
+        color: var(--text);
+        border: 2px solid var(--sage);
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 18px;
+        transition: all 0.25s ease;
+       ">
+      📤 Carica foto o video
+    </a>
+
+    <!-- Pulsante Visualizza -->
+    <a href="https://drive.google.com/drive/folders/1RhHJZiEGZSKQS7H4V6X1_J_rVHQBNgl4B_00pypDR4Kw130Q0hhPsIf42kQbMRo-W-RQY6Eu?usp=sharing"
+       target="_blank"
+       style="
+        display: block;
+        width: 100%;
+        padding: 14px 22px;
+        background: white;
+        color: var(--text);
+        border: 2px solid var(--secondary);
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        transition: all 0.25s ease;
+       ">
+      📸 Visualizza foto e video
+    </a>
+
   </div>
-  <small>Presto aggiungeremo altre foto</small>
-</section>
 
-<section>
-  <h2>Programma della Giornata</h2>
-  <ul class="programma">
-    <li>17:00 · Cerimonia presso Villa Calchi</li>
-    <li>18:00 · Aperitivo in giardino</li>
-    <li>19:30 · Cena</li>
-    <li>21:00 · Taglio della torta e musica</li>
-  </ul>
-</section>
-
-<section class="location">
-  <h2>Informazioni e Mappa</h2>
-  <p><strong>Villa Calchi</strong><br>
-  Via Principe Pio Giovanni Falcò, 50<br>
-  23807 Merate LC</p>
-  <iframe src="https://www.google.com/maps?q=Villa+Calchi+Via+Principe+Pio+Giovanni+Falc%C3%B2+50,+Merate+LC&output=embed"></iframe>
-  <p><a href="https://www.google.com/maps/place/Villa+Calchi/@45.7201688,9.4228906,16z/data=!3m1!4b1!4m6!3m5!1s0x4786aee9dfec3b63:0xf6814680cceb1a19!8m2!3d45.7201651!4d9.4254655!16s%2Fg%2F11b74zk96f?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" style="color:var(--secondary);text-decoration:underline;">Vedi su Google Maps</a></p>
-</section>
-
-<section>
-  <h2>Regalo Nozze</h2>
-  <p>Chi desidera farci un regalo, può contribuire al nostro viaggio di nozze!<br>Puoi utilizzare le informazioni qui sotto:</p>
-  <div class="iban-section">
-    <div class="iban-row">
-      IBAN: <span id="ibanText">IT97K0200833760000106840565</span>
-      <button class="copy-btn" onclick="copyIban()">Copia IBAN</button>
-    </div>
-    <div>
-      Intestazione: <strong>Guida Massimo, Rosato Marta Irene</strong><br>
-      Causale suggerita: <em>“Viaggio di nozze Massimo e Marta”</em>
-    </div>
-  </div>
-  <script>
-    function copyIban() {
-      let iban = document.getElementById('ibanText').innerText;
-      navigator.clipboard.writeText(iban).then(function() {
-        alert('IBAN copiato!');
-      }, function(err) {
-        alert('Errore nella copia');
-      });
+  <style>
+    section a:hover {
+      background: var(--sage);
+      color: white !important;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
-  </script>
-  <p>Grazie di cuore da Massimo & Marta!</p>
+  </style>
+
 </section>
-</main>
-
-<div class="footer">
-  &copy; 2026 Massimo & Marta - Matrimonio | Realizzato con <span style="color:#e75480;">&#10084;</span>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("Q6bdpKpfat5tUrB_s");
-
-  const form = document.getElementById('rsvpForm');
-  const result = document.getElementById('rsvpResult');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    emailjs.sendForm("service_gfds43n", "template_hjhi6ow", this)
-      .then(() => {
-        result.textContent = "Grazie per la conferma!";
-        result.style.color = "green";
-        form.reset();
-      })
-      .catch((error) => {
-        result.textContent = "Errore durante l'invio, riprova.";
-        result.style.color = "red";
-        console.error("EMAILJS ERROR", error);
-      });
-  });
-</script>
-
-</body>
-</html>
